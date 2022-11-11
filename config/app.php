@@ -123,6 +123,10 @@ return [
 
     'cipher' => 'AES-256-CBC',
 
+    'rates' => [
+        'EUR_TO_USD' => 0.97,
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
