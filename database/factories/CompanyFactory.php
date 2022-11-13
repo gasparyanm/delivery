@@ -13,7 +13,7 @@ class CompanyFactory extends Factory
     {
         return [
             'name' => $this->faker->unique()->name,
-            'formula' => Company::FORMULA_VAR . ' * 0.3/100',
+            'formula' => 'return ' . Company::FORMULA_VAR . ' * 0.3/100;',
         ];
     }
 }

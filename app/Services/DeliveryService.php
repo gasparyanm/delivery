@@ -22,12 +22,12 @@ final class DeliveryService
 
         $deliveries = $this->filterQuery($query, $data)->get()
             ->filter(function (Delivery $delivery) use ($data) {
-                $delivery->applyDeliveryCost();
                 if (isset($data['minDeliveryCost'])) {
                     return
                         $delivery->deliveryCost >= $data['minDeliveryCost'] &&
                         $delivery->deliveryCost <= $data['maxDeliveryCost'];
                 }
+
                 return true;
             });
 

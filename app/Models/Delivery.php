@@ -24,12 +24,19 @@ class Delivery extends Model
         'weight' => 'float',
     ];
 
+    protected $appends = [
+        'deliveryCost'
+    ];
+
     public function company(): BelongsTo
     {
         return $this->belongsTo(Company::class);
     }
 
-    public function applyDeliveryCost(): void
+    /**
+     * @return mixed
+     */
+    public function getDeliveryCostAttribute()
     {
         $formula = str_replace(
             Company::FORMULA_VAR,
@@ -37,6 +44,6 @@ class Delivery extends Model
             $this->company->formula
         );
 
-        $this->deliveryCost = eval($formula);
+        return eval($formula);
     }
 }
